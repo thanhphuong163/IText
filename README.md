@@ -1,3 +1,9 @@
 # IText: Contrastive Self-Supervised Learning for Text Incoherence Detection
 
 **Abstract**: Coherence is one of the desirable properties that determines the quality of AI-generated texts. Coherence ensures that the ideas are connected in a logical flow and the consistency in information and facts is maintained. Therefore, models for understanding and detecting incoherence are crucial to achieve high-quality AI text generation capabilities. In this paper, we focus on the task of detecting sentences that are inconsistent with the overall document context. Supervised models may not be viable for this task due to the lack of labeled data on text incoherence. Therefore, we propose a contrastive self-supervised learning method that relies on both semantic content and neighborhood contexts of sentences for detecting incoherence. We propose a complex model that integrates graph neural networks with language models to contrast and compare two representations of each sentence—one based on its content and the other on its neighborhood context—for detecting incoherent sentences. Extensive experiments on several real-world datasets show the effectiveness of our proposed method.
+
+![model](model.jpeg)
+
+## Environment Installation
+
+write something here
