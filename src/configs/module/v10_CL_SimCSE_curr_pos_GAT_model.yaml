@@ -1,0 +1,14 @@
+_target_: modules.v10_CL_SimCSE_curr_pos_GAT_model.LitModule
+model_cfg:
+  encoder_pretrained_model_name: ${datamodule.pretrained_model_name}
+  encoder_trainable: true
+  cache_dir: ./data/model_cache
+  gnn_hidden_dims: [768, 768, 768]
+  gnn_n_heads: 8
+  gnn_dropout_p: 0.1
+  cross_cl_alpha: 0.1
+  cross_cl_gamma: 0.1
+optimizer_partial:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 1e-4

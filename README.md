@@ -6,4 +6,53 @@
 
 ## Environment Installation
 
-write something here
+Run command below to install python virtual environment:
+```
+conda env create -f environment.yml
+```
+
+## Download Datasets
+
+You can download data from this [Data](https://www.dropbox.com/scl/fo/synobjwmglqbg3ys10asl/AH9BsH99jved6PrRBVqwQx0?rlkey=ac8pnz6hxwcx7q9bcasp9o8t3&st=1awqvo0k&dl=0) and put it in root directory.
+
+## Run Model
+
+Create a shell script file at root directory with the content below:
+```
+#! /bin/sh
+
+source activate torch2
+
+
+datamodule=${1:-CSAbstructs_doc_datamodule}
+# datamodule=${1:-wikinews_doc_datamodule}
+# datamodule=${1:-simple_wikipedia_doc_datamodule}
+# datamodule=${1:-cs_intro_doc_datamodule}
+model=${2:-CL_SimCSE_GAT_model}
+
+scrn_session="IText_$datamodule"
+
+export TOKENIZERS_PARALLELISM=false
+export HYDRA_FULL_ERROR=1
+export CUDA_VISIBLE_DEVICES=0
+
+screen -dmS $scrn_session python -W ignore src/main.py \
+    datamodule=$datamodule \
+    module=$model \
+    module.gnn_lr=1e-4 \
+    trainer.max_epochs=60 \
+    trainer.check_val_every_n_epoch=1 \
+    trainer.devices=[0]
+
+screen -r $scrn_session
+```
+
+Now you can run the model without activating virtual environment.
+
+## Citation
+
+add bibtex later
+
+## Contact
+
+If you have any question, please contact us via email: ntphuong@nmsu.edu

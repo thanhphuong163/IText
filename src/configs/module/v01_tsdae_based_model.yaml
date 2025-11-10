@@ -1,0 +1,15 @@
+_target_: modules.v01_tsdae_based_model.LitModule
+model_cfg:
+  encoder_pretrained_model_name: ${datamodule.pretrained_model_name}
+  decoder_pretrained_model_name: ${datamodule.pretrained_model_name}
+  encoder_trainable: true
+  decoder_trainable: true
+  tie_encoder_decoder: true
+  max_len_sent: ${datamodule.max_len_sent}
+  cache_dir: ./data/model_cache
+  gnn_in_channel: 768
+  gnn_out_channel: 768
+optimizer_partial:
+  _target_: torch.optim.AdamW
+  _partial_: true
+  lr: 3e-5

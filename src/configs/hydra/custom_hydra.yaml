@@ -1,0 +1,17 @@
+run:
+  dir: ${output_dir}
+sweep:
+  dir: ${output_dir}
+  subdir: ${hydra.job.override_dirname}
+# sweeper:
+#   params:
+#     model: nn_classification, logistic_reg
+# callbacks:
+#   save_job_info:
+#     _target_: hydra.experimental.pickle_job_info_callback.PickleJobInfoCallback
+job:
+  config:
+    override_dirname:
+      kv_sep: ':'
+      item_sep: ','
+      exclude_keys: ['datamodule','datamodule_1','datamodule_2','datamodule_3','trainer.devices', 'ckpt_path', 'callbacks']

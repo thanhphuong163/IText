@@ -1,0 +1,5 @@
+_target_: datamodules.doc_datamodule.DocDataModule
+data_dir: ./data/cs_intro_100
+pretrained_model_name: sentence-transformers/all-mpnet-base-v2
+window_sz: 6
+batch_size: 3

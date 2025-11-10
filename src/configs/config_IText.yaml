@@ -1,0 +1,32 @@
+defaults:
+  - hydra: custom_hydra
+  - loggers:
+    - csvlogger
+  - callbacks:
+    - model_summary
+    - rich_progressbar
+    # - model_checkpoint
+  - module: CL_SimCSE_GAT_model
+  - datamodule: CSAbstructs_doc_datamodule
+  - _self_
+
+project_name: IText
+
+output_dir: ./logs_IText/${now:%Y-%m-%d}/${now:%H-%M-%S}
+
+trainer:
+  _target_: pytorch_lightning.Trainer
+  accelerator: auto
+  devices: [0]
+  max_epochs: 60
+  precision: "32"
+  fast_dev_run: false
+  deterministic: false
+  num_sanity_val_steps: 0
+  enable_progress_bar: true
+  enable_checkpointing: false
+  log_every_n_steps: 15
+  check_val_every_n_epoch: 1
+  _partial_: true
+
+ckpt_path: null

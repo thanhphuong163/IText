@@ -1,0 +1,9 @@
+_target_: modules.v08_IText_two_optimizers_CL_SimCSE.IText
+lambda_: 1.
+alpha_: 0.1
+pretrained_model_name: sentence-transformers/all-mpnet-base-v2
+hidden_dims: [768, 256, 256]
+heads: 12
+negative_slope: 0.2
+dropout: 0.0
+temperature: 0.05

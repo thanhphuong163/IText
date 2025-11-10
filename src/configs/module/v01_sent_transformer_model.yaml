@@ -1,0 +1,10 @@
+_target_: mpnet_modules.v01_sent_transformer_model.LitModule
+model_cfg:
+  encoder_pretrained_model_name: ${datamodule.pretrained_model_name}
+  encoder_trainable: true
+  cache_dir: ./data/model_cache
+optimizer_partial:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 1e-4
+encoder_lr: 1e-5
